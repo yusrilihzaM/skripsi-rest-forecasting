@@ -14,6 +14,7 @@ class Ctdma_model extends CI_model
         $data_tourist=$this->db->query($sql_data_tourist)->result_array();
 
         for ($x = 0; $x < $count_data; $x++){
+          
             if($x<=$limit_season-1){
                 // echo($data_tourist[$x]['t']."<br>");
                 $data=array(
