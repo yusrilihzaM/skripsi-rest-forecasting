@@ -24,6 +24,7 @@ class Smoothed_model extends CI_model
         );
         $this->db->insert('calculate_smoothed', $data);
     }
+    
     public function calculate_smoothed(
         $id_tourist_data_type
     ){
@@ -47,26 +48,6 @@ class Smoothed_model extends CI_model
             $this->insert_smoothed($id_data_pengunjung,$method_type,$smoothed);
 
             }
-        }
-
-        // foreach ($data_tourist as $data) {
-        //     $id_tourist_data_type=$data['id_tourist_data_type'];
-        //     $season=$data['season'];
-        //     $season_index=(double) $this->get_season_index($id_tourist_data_type,1,$season) ["seasonal_index"];
-        //     $data_pengunjung=$data['data_pengunjung'];
-        //     $id_data_pengunjung=$data['id_data_pengunjung'];
-        //     $smoothed= $data_pengunjung-$season_index;
-        //     $this->insert_smoothed($id_data_pengunjung,1,$smoothed);
-        //     }
-        // foreach ($data_tourist as $data) {
-        //     $id_tourist_data_type=$data['id_tourist_data_type'];
-        //     $season=$data['season'];
-        //     $season_index=(double) $this->get_season_index($id_tourist_data_type,2,$season) ["seasonal_index"];
-        //     $data_pengunjung=$data['data_pengunjung'];
-        //     $id_data_pengunjung=$data['id_data_pengunjung'];
-        //     $smoothed= $data_pengunjung/$season_index;
-        //     $this->insert_smoothed($id_data_pengunjung,2,$smoothed);
-        //     }
-            
+        }  
     }
 }
