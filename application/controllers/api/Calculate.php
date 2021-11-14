@@ -6,7 +6,7 @@ require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
 
-class Coba extends REST_Controller {
+class Calculate extends REST_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -18,7 +18,6 @@ class Coba extends REST_Controller {
         $this->load->model('CalculateForecast_model');
         $this->load->model('ErrorMeasurement_model');
     }
-
 
     public function index_get(){
         $this->db->empty_table('calculate_ctdma');
