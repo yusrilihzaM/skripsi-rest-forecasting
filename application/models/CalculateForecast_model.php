@@ -38,7 +38,40 @@ class CalculateForecast_model extends CI_model
         $data_tourist=$this->db->query($sql_data_tourist)->result_array();
         return $data_tourist;
     }
-
+    public function get_data_all_forecast(
+        $id_tourist_data_type,
+        $id_method_type
+    ){
+        $sql_data_tourist="SELECT t,
+        id_data_pengunjung,
+        data_pengunjung,
+        MONTHNAME(STR_TO_DATE(`month`, '%m')) m,
+        `month`,
+        `year`,
+        ctdma,
+        ratio,
+        id_seasonal_index,
+        seasonal_index,
+        smoothed,
+        unadjusted,
+        adjusted,
+        error,
+        mad,
+        mape
+        FROM data_pengunjung
+        NATURAL JOIN calculate_ctdma
+        NATURAL JOIN calculate_ratio
+        NATURAL JOIN seasonal_index
+        NATURAL JOIN calculate_smoothed
+        NATURAL JOIN calculate_forecasting
+        WHERE 
+        id_tourist_data_type=$id_tourist_data_type
+        AND 
+        id_method_type=$id_method_type
+        ORDER BY t ASC";
+        $data_tourist=$this->db->query($sql_data_tourist)->result_array();
+        return $data_tourist;
+    }
     public function insert_calculate_forecast(
         $id_data_pengunjung,
         $unadjusted,

@@ -9,6 +9,14 @@ class TouristDataType_model extends CI_model
             return $this->db->get_where('tourist_data_type',['id_tourist_data_type'=>$id])->result_array();
         }
     }
+    public function get_tourist_data_type_place($id = null)
+    {
+        if ($id == null){
+            return $this->db->get_where('tourist_data_type',['data_type'=>"tempat wisata"])->result_array();
+        }else{
+            return $this->db->get_where('tourist_data_type',['id_tourist_datas_type'=>$id])->result_array();
+        }
+    }
     public function delete_tourist_data_type($id){
 
         $this->db->where('id_tourist_data_type', $id);

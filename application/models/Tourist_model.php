@@ -9,6 +9,14 @@ class Tourist_model extends CI_model
             return $this->db->get_where('data_pengunjung',['id_data_pengunjung'=>$id])->result_array();
         }
     }
+    public function get_tourist_by_type($id_tourist_data_type = null)
+    {
+        if ($id_tourist_data_type == null){
+            return $this->db->get('data_pengunjung')->result_array();
+        }else{
+            return $this->db->get_where('data_pengunjung',['id_tourist_data_type'=>$id_tourist_data_type])->result_array();
+        }
+    }
     public function delete_tourist($id){
 
         $this->db->where('id_data_pengunjung', $id);

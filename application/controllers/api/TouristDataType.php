@@ -35,7 +35,29 @@ class TouristDataType extends REST_Controller {
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
+    public function datatype_get(){
 
+        $id=$this->get('id');
+
+        if($id == null){
+            $tourist = $this->TouristDataType_model->get_tourist_data_type_place();
+        }else{
+            $tourist = $this->TouristDataType_model->get_tourist_data_type_place($id);
+        }
+
+        
+        if($tourist){
+            $this->response([
+                'status' => true,
+                'data_tourist' => $tourist
+            ], REST_Controller::HTTP_OK);
+        }else{
+            $this->response([
+                'status' => false,
+                'message' => 'Toursit data type does not exist'
+            ], REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
     public function index_delete(){
 
         $id=$this->delete('id_tourist_data_type');
@@ -64,7 +86,34 @@ class TouristDataType extends REST_Controller {
 
         
     }
+    public function delete_put(){
 
+        $id=$this->put('id_tourist_data_type');
+
+        if($id == null){
+            $this->response([
+                'status' => false,
+                'message' => 'ID cannot be empty'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }else{
+            if($this->TouristDataType_model->delete_tourist_data_type($id)>0){
+                // ok
+                $this->response([
+                    'status' => true,
+                    'id' => $id,
+                    'message'=>'deleted'
+                ], REST_Controller::HTTP_OK);
+            }{
+                // id tidak ada
+                $this->response([
+                    'status' => false,
+                    'message' => 'ID cannot be empty'
+                ], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+
+        
+    }
     public function index_put(){
         $id=$this->put('id_tourist_data_type');
         $data = array(

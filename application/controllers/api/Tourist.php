@@ -16,12 +16,12 @@ class Tourist extends REST_Controller {
 
     public function index_get(){
 
-        $id=$this->get('id');
+        $id=$this->get('id_tourist_data_type');
 
         if($id == null){
-            $tourist = $this->Tourist_model->get_tourist();
+            $tourist = $this->Tourist_model->get_tourist_by_type();
         }else{
-            $tourist = $this->Tourist_model->get_tourist($id);
+            $tourist = $this->Tourist_model->get_tourist_by_type($id);
         }
 
         
@@ -74,8 +74,7 @@ class Tourist extends REST_Controller {
             'data_pengunjung'    => $this->put('data_pengunjung'),
             'month'    => $this->put('month'),
             'year'    => $this->put('year'),
-            'id_tourist_data_type'    => $this->put('id_tourist_data_type'),
-            't'    => $this->put('t'),
+            'id_tourist_data_type'    => $this->put('id_tourist_data_type')
         );
 
         if($this->Tourist_model->put_tourist($data,$id) > 0){
@@ -88,6 +87,24 @@ class Tourist extends REST_Controller {
             $this->response([
                 'status' => false,
                 'message' => 'Failed to update tourist'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+
+    }
+
+    public function delete_put(){
+        $id=$this->put('id_data_pengunjung');
+    
+        if($this->Tourist_model->delete_tourist($id) > 0){
+            $this->response([
+                'status' => true,
+                'message'=>'tourist delete successfully'
+            ], REST_Controller::HTTP_CREATED);
+        }{
+            // id tidak ada
+            $this->response([
+                'status' => false,
+                'message' => 'Failed to delete tourist'
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
 
