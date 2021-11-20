@@ -13,7 +13,15 @@ class Tourist extends REST_Controller {
         $this->load->model('Tourist_model');
     }
 
-
+    public function empty_tabel(){
+        $this->db->empty_table('calculate_ctdma');
+        $this->db->empty_table('seasonal_index');
+        $this->db->empty_table('calculate_ratio');
+        $this->db->empty_table('calculate_smoothed');
+        $this->db->empty_table('coefficient_parameter');
+        $this->db->empty_table('calculate_forecasting');
+        $this->db->empty_table('error_measurement');
+    }
     public function index_get(){
 
         $id=$this->get('id_tourist_data_type');
@@ -26,6 +34,7 @@ class Tourist extends REST_Controller {
 
         
         if($tourist){
+         
             $this->response([
                 'status' => true,
                 'data_tourist' => $tourist
@@ -49,7 +58,7 @@ class Tourist extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST);
         }else{
             if($this->Tourist_model->delete_tourist($id)>0){
-                // ok
+                $this->empty_tabel();
                 $this->response([
                     'status' => true,
                     'id' => $id,
@@ -78,6 +87,7 @@ class Tourist extends REST_Controller {
         );
 
         if($this->Tourist_model->put_tourist($data,$id) > 0){
+            $this->empty_tabel();
             $this->response([
                 'status' => true,
                 'message'=>'tourist updated successfully'
@@ -96,6 +106,7 @@ class Tourist extends REST_Controller {
         $id=$this->put('id_data_pengunjung');
     
         if($this->Tourist_model->delete_tourist($id) > 0){
+            $this->empty_tabel();
             $this->response([
                 'status' => true,
                 'message'=>'tourist delete successfully'
@@ -118,6 +129,7 @@ class Tourist extends REST_Controller {
         );
 
         if($this->Tourist_model->post_tourist($data) > 0){
+            $this->empty_tabel();
             $this->response([
                 'status' => true,
                 'message'=>'add new tourist successfully'
