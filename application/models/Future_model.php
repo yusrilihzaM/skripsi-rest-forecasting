@@ -10,7 +10,11 @@ class Future_model extends CI_model
         $data_si=$this->db->query($sql_si)->row_array();
         return $data_si;
     }
-
+    public function get_count_forecast(){
+        $sql_si="SELECT COUNT(id_forecast_future) count_data FROM forecast_future";
+        $data_si=$this->db->query($sql_si)->row_array();
+        return $data_si;
+    }
     public function get_future_forecast(
         $id_tourist_data_type = null,
         $id_method_type = null
@@ -19,10 +23,7 @@ class Future_model extends CI_model
         if ($id_tourist_data_type == null){
             return $this->db->get('forecast_future')->result_array();
         }else{
-            return $this->db->get_where('forecast_future',[
-                'id_tourist_data_type'=>$id_tourist_data_type,
-                'id_method_type'=>$id_method_type
-            ])->result_array();
+            return $this->db->query("SELECT * FROM forecast_future WHERE id_tourist_data_type=$id_tourist_data_type AND id_method_type=$id_method_type")->result_array();
         }
     }
 
@@ -80,7 +81,7 @@ class Future_model extends CI_model
         $id_tourist_data_type,
         $id_method_type
     ){
-        $last_data=$this->get_last_data(1);
+        $last_data=$this->get_last_data($id_tourist_data_type);
         $last_t=(int)$last_data['t'];
         $last_season=(int)$last_data['month'];
         $last_year=(int)$last_data['year'];
@@ -100,7 +101,7 @@ class Future_model extends CI_model
         }
   
        
-        for ($x = 0; $x <= $period; $x++){
+        for ($x = 1; $x <= $period; $x++){
             $current_t=$last_t+$x+1;
             $id_seasonal_index=(int)$this->get_season_index( $id_tourist_data_type,$id_method_type,$current_season)["id_seasonal_index"];
             $seasonal_index=(double)$this->get_season_index( $id_tourist_data_type,$id_method_type,$current_season)["seasonal_index"];
@@ -111,7 +112,7 @@ class Future_model extends CI_model
             if( $id_method_type==2){
                 $adjusted_forecast=$unadjusted_forecast*$seasonal_index;
             }
-            echo("--$current_season :id_seasonal_index $id_seasonal_index<br>");
+            // echo("--$current_season :id_seasonal_index $id_seasonal_index<br>");
             $this->insert_future(
                 $current_season,
                 $current_year,

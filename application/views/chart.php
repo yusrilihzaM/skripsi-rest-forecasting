@@ -29,6 +29,7 @@
             </div>
         </div>
     </div> -->
+    <div class="container-fluid">
     <div class="row" style=" height: 100%;">
         <div class="col" style="height: 100%;">
             <div class="card" style="height: 100%;">
@@ -39,6 +40,8 @@
             </div>
         </div>
     </div>
+    </div>
+    
 
     <script>
     var options = {
