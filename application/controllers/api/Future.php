@@ -26,11 +26,11 @@ class Future extends REST_Controller {
                 'status' => true,
                 'data_future' => $future
             ], REST_Controller::HTTP_OK);
-        }else{
+        }{
             $this->response([
                 'status' => false,
                 'message' => 'Data Future does not exist'
-            ], REST_Controller::HTTP_NOT_FOUND);
+            ], REST_Controller::HTTP_OK);
         }
 
     }
