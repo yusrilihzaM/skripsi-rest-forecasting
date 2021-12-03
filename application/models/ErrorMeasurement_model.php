@@ -19,7 +19,7 @@ class ErrorMeasurement_model extends CI_model
             $sql_data="SELECT
         SUM(error) sum_error,
         SUM(mad) sum_mad,
-        SUM(mape) sum_mape
+        SUM(mape) sum_mape,
         SUM(smape) sum_smape
         FROM calculate_forecasting
         NATURAL JOIN data_pengunjung
@@ -43,13 +43,14 @@ class ErrorMeasurement_model extends CI_model
             $mad=1/$n*$sum_mad;
             $mape=100/$n*$sum_mape;
             $ts=$sum_error/$mad;
-            $smape=1/$n*$sum_smape;
+            $smape=100/$n*$sum_smape;
             $data=array(
                 "id_error_measurement"=>0,
                 "rsfe"=>$sum_error,
                 "mad"=>$mad,
                 "mape"=>$mape,
                 "ts"=>$ts,
+                "smape"=>$smape,
                 "id_tourist_data_type"=>$id_tourist_data_type,
                 "id_method_type"=>$id_method_type
                 );

@@ -79,6 +79,7 @@ class CalculateForecast_model extends CI_model
         $error,
         $mad,
         $mape,
+        $smape,
         $id_method_type
     ){
         $data=array(
@@ -89,6 +90,7 @@ class CalculateForecast_model extends CI_model
             "error"=>$error,
             "mad"=>$mad,
             "mape"=>$mape,
+            "smape"=>$smape,
             "id_method_type"=>$id_method_type
             );
             $this->db->insert('calculate_forecasting', $data);
@@ -125,7 +127,7 @@ class CalculateForecast_model extends CI_model
                 $error=$data_pengunjung-$adjusted;
                 $mad=abs($error);
                 $mape=abs($error/$data_pengunjung);
-    
+                $smape=abs($error)/((abs($data_pengunjung)+abs($adjusted))/2);
                 $this-> insert_calculate_forecast(
                     $id_data_pengunjung,
                     $unadjusted,
@@ -133,6 +135,7 @@ class CalculateForecast_model extends CI_model
                     $error,
                     $mad,
                     $mape,
+                    $smape,
                     $id_method_type
                 );
     
