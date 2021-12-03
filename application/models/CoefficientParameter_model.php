@@ -45,7 +45,7 @@ class CoefficientParameter_model extends CI_model
         $id_method_type
     ){
         $data=array(
-            "id_coefficient_parameter"=>null,
+            "id_coefficient_parameter"=>0,
             "a"=>$a,
             "b"=>$b,
             "id_tourist_data_type"=>$id_tourist_data_type,

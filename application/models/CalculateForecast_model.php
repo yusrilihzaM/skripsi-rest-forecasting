@@ -82,7 +82,7 @@ class CalculateForecast_model extends CI_model
         $id_method_type
     ){
         $data=array(
-            "id_calculate_forecasting"=>null,
+            "id_calculate_forecasting"=>0,
             "id_data_pengunjung"=>$id_data_pengunjung,
             "unadjusted"=>$unadjusted,
             "adjusted"=>$adjusted,

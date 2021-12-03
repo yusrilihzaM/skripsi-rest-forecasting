@@ -18,19 +18,19 @@ class Ctdma_model extends CI_model
             if($x<=$limit_season-1){
                 // echo($data_tourist[$x]['t']."<br>");
                 $data=array(
-                    "id_calculate_ctdma"=>null,
+                    "id_calculate_ctdma"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "ctdma"=>null
                 );
                 $data_aditif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>1,
                     "ratio"=>null
                 );
 
                 $data_multiplikatif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>2,
                     "ratio"=>null
@@ -44,19 +44,19 @@ class Ctdma_model extends CI_model
             if($x>=$lower_limit){
                 // echo($data_tourist[$x]['t']."<br>");
                 $data=array(
-                    "id_calculate_ctdma"=>null,
+                    "id_calculate_ctdma"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "ctdma"=>null
                 );
                 $data_aditif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>1,
                     "ratio"=>null
                 );
 
                 $data_multiplikatif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>2,
                     "ratio"=>null
@@ -86,19 +86,19 @@ class Ctdma_model extends CI_model
                 $ratio_multiplikatif=$data_tourist[$x]['data_pengunjung']/$ctdma;
                 // echo("$ctdma <br>");
                 $data=array(
-                    "id_calculate_ctdma"=>null,
+                    "id_calculate_ctdma"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "ctdma"=>$ctdma
                 );
                 $data_aditif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>1,
                     "ratio"=>$ratio_aditif
                 );
 
                 $data_multiplikatif=array(
-                    "id_calculate_ratio"=>null,
+                    "id_calculate_ratio"=>0,
                     "id_data_pengunjung"=>$data_tourist[$x]['id_data_pengunjung'],
                     "id_method_type"=>2,
                     "ratio"=>$ratio_multiplikatif

@@ -23,6 +23,7 @@ class Auth extends REST_Controller {
         $email=$this->get('email');
         $password=$this->get('password');
         $user=$this->db->get_where('user', ['email' => $email])->row_array();
+    
         if($user){
             if (password_verify($password, $user['password'])) {
                 $this->response([
@@ -37,7 +38,7 @@ class Auth extends REST_Controller {
                 ], REST_Controller::HTTP_OK);
             }
         }
-        else{
+        else if(!$user){
             $this->response([
                 'status' => false,
                 'message' => 'User not found'

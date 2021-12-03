@@ -53,7 +53,7 @@ class Future_model extends CI_model
         $id_method_type
     ){
         $data=array(
-            "id_forecast_future"=>null,
+            "id_forecast_future"=>0,
             "season_future"=>$season_future,
             "year_future"=>$year_future,
             "t_future"=>$t_future,
