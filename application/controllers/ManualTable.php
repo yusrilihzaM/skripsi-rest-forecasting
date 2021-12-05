@@ -20,7 +20,7 @@ class ManualTable extends CI_Controller {
         $id_tourist_data_type=$this->uri->segment(3);
         $id_method_type=$this->uri->segment(4);
 
-        $data["data_manual"]= $this->db->query("SELECT t, data_pengunjung, ctdma, ratio, seasonal_index, smoothed, unadjusted, adjusted,error, mad, mape
+        $data["data_manual"]= $this->db->query("SELECT t, data_pengunjung, ctdma, ratio, seasonal_index, smoothed, unadjusted, adjusted,error, smape
         FROM data_pengunjung
         NATURAL JOIN calculate_ctdma
         NATURAL JOIN calculate_ratio

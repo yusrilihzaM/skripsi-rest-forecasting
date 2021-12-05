@@ -55,9 +55,10 @@ class CalculateForecast_model extends CI_model
         smoothed,
         unadjusted,
         adjusted,
-        error,
-        mad,
-        mape
+        error
+        ,
+        -- mad,
+        smape
         FROM data_pengunjung
         NATURAL JOIN calculate_ctdma
         NATURAL JOIN calculate_ratio
@@ -77,8 +78,8 @@ class CalculateForecast_model extends CI_model
         $unadjusted,
         $adjusted,
         $error,
-        $mad,
-        $mape,
+        // $mad,
+        // $mape,
         $smape,
         $id_method_type
     ){
@@ -88,8 +89,8 @@ class CalculateForecast_model extends CI_model
             "unadjusted"=>$unadjusted,
             "adjusted"=>$adjusted,
             "error"=>$error,
-            "mad"=>$mad,
-            "mape"=>$mape,
+            // "mad"=>$mad,
+            // "mape"=>$mape,
             "smape"=>$smape,
             "id_method_type"=>$id_method_type
             );
@@ -125,16 +126,16 @@ class CalculateForecast_model extends CI_model
                 }
                 
                 $error=$data_pengunjung-$adjusted;
-                $mad=abs($error);
-                $mape=abs($error/$data_pengunjung);
+                // $mad=abs($error);
+                // $mape=abs($error/$data_pengunjung);
                 $smape=abs($error)/((abs($data_pengunjung)+abs($adjusted))/2);
                 $this-> insert_calculate_forecast(
                     $id_data_pengunjung,
                     $unadjusted,
                     $adjusted,
                     $error,
-                    $mad,
-                    $mape,
+                    // $mad,
+                    // $mape,
                     $smape,
                     $id_method_type
                 );

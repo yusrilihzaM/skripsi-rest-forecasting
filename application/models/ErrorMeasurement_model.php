@@ -18,8 +18,8 @@ class ErrorMeasurement_model extends CI_model
         for ($id_method_type = 1; $id_method_type <= 2; $id_method_type++){
             $sql_data="SELECT
         SUM(error) sum_error,
-        SUM(mad) sum_mad,
-        SUM(mape) sum_mape,
+        -- SUM(mad) sum_mad,
+        -- SUM(mape) sum_mape,
         SUM(smape) sum_smape
         FROM calculate_forecasting
         NATURAL JOIN data_pengunjung
@@ -36,20 +36,20 @@ class ErrorMeasurement_model extends CI_model
 
         if($n){
             $sum_error=(double)$data['sum_error'];
-            $sum_mad=(double)$data['sum_mad'];
-            $sum_mape=(double)$data['sum_mape'];
+            // $sum_mad=(double)$data['sum_mad'];
+            // $sum_mape=(double)$data['sum_mape'];
             $sum_smape=(double)$data['sum_smape'];
 
-            $mad=1/$n*$sum_mad;
-            $mape=100/$n*$sum_mape;
-            $ts=$sum_error/$mad;
+            // $mad=1/$n*$sum_mad;
+            // $mape=100/$n*$sum_mape;
+            // $ts=$sum_error/$mad;
             $smape=100/$n*$sum_smape;
             $data=array(
                 "id_error_measurement"=>0,
                 "rsfe"=>$sum_error,
-                "mad"=>$mad,
-                "mape"=>$mape,
-                "ts"=>$ts,
+                // "mad"=>$mad,
+                // "mape"=>$mape,
+                // "ts"=>$ts,
                 "smape"=>$smape,
                 "id_tourist_data_type"=>$id_tourist_data_type,
                 "id_method_type"=>$id_method_type

@@ -18,8 +18,8 @@
                                 <th>Unadjusted</th>
                                 <th>Adjusted</th>
                                 <th>Error</th>
-                                <th>MAD</th>
-                                <th>MAPE</th>
+                              
+                                <th>SMAPE</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +39,7 @@
                                 <td><?=$data_manual['unadjusted']?></td>
                                 <td><?=$data_manual['adjusted']?></td>
                                 <td><?=$data_manual['error']?></td>
-                                <td><?=$data_manual['mad']?></td>
-                                <td><?=$data_manual['mape']?></td>
+                                <td><?=$data_manual['smape']?></td>
                             </tr>
                             <?php $n0++ ?>
                             <?php endforeach ?>
