@@ -98,7 +98,7 @@
             height: 400
         },
         series: [{
-            name: 'Data Real (At)',
+            name: 'Data Asli (At)',
             type: 'line',
             data: [
                 <?php
@@ -108,7 +108,7 @@
                     endforeach;?>
             ]
         }, {
-            name: 'Data Hasil Forecast (Ft)',
+            name: 'Data Hasil Peramalan (Ft)',
             type: 'line',
             data: [
                 <?php
