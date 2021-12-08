@@ -22,7 +22,7 @@ class Compare extends CI_Controller {
         $data['name'] = "Grafik perbandingan";
         $data['aditif']=$this->Comparison_model->get_smape_aditif();
         $data['multiplikatif']=$this->Comparison_model->get_smape_multiplikatif();
-        $data['tempat']=$this->TouristDataType_model->get_tourist_data_type();
+        $data['tempat']=$this->Comparison_model->get_tempat();
         // var_dump($data['tempat']);
         // die;
 		$this->load->view('chart_compare.php',$data);

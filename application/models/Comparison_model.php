@@ -41,5 +41,13 @@ class Comparison_model extends CI_model
         return $query;
     }
 
-
+    function get_tempat(){
+        $query=$this->db->query("SELECT
+        DISTINCT(tourist_data_type)
+        FROM error_measurement
+        NATURAL JOIN tourist_data_type
+        NATURAL JOIN method_type
+        ORDER BY  tourist_data_type ")->result_array();
+        return $query;
+    }
 }

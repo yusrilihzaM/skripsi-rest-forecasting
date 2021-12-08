@@ -34,6 +34,32 @@
         <div class="col" style="height: 100%;">
             <div class="card" style="height: 100%;">
                 <div class="card-body">
+                <table id="datatable" class="table table-bordered table-responsive dt-responsive nowrap"
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Tempat Wisata</th>
+                                <th>SMAPE</th>
+                                <th>Metode</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                         
+                            <?php foreach ($data as $data) : ?>
+
+                            <tr>
+                                <td><?=$data['tourist_data_type']?></td>
+                                <td><?=round($data['smape'],4)?></td>
+                                <td><?=$data['method_type']?></td>
+                                
+                            </tr>
+                           
+                            <?php endforeach ?>
+                        </tbody>
+
+
+                    </table>
 
                 </div>
             </div>

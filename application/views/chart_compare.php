@@ -101,14 +101,14 @@
             name: 'Dekomposisi Aditif',
             data: [<?php
                     foreach($aditif as $aditif):?>
-                <?= (double)$aditif['smape'].','?>
+                <?= (float)$aditif['smape'].','?>
                 <?php
                     endforeach;?>]
         }, {
             name: 'Dekomposisi Multiplikatif',
             data: [<?php
                     foreach($multiplikatif as $multiplikatif):?>
-                <?= (double)$multiplikatif['smape'].','?>
+                <?= (float)$multiplikatif['smape'].','?>
                 <?php
                     endforeach;?>]
         }, ],
@@ -147,6 +147,7 @@
                     // $data_bulan=$bulan['m'];
                     $label=(string)$tempat['tourist_data_type'];
                     echo "'$label'".',';
+                    
                 ?>
 
                 <?php
